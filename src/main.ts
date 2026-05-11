@@ -4,10 +4,15 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // HABILITAR CORS
+  // Habilitar CORS
   app.enableCors();
 
-  await app.listen(3000);
+  // Puerto dinámico para Render
+  const port = process.env.PORT || 3000;
+
+  await app.listen(port);
+
+  console.log(`Servidor corriendo en puerto ${port}`);
 }
 
 bootstrap();
